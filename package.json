@@ -1,0 +1,11 @@
+{
+    "name": "pdf_png",
+    "version": "0.1",
+    "description": "I exist therefore I am.",
+    "license": "MIT",
+    "main": "index.js",
+    "dependencies": {
+        "fs": "^0.0.1-security",
+        "pdf-lib": "^1.16.0"
+    }
+}
