@@ -13,24 +13,24 @@ const createPDF = async (pdfTemplateName, imageName) => {
     const form = pdfDoc.getForm();
 
     await setQRImage(
-      form,
-      "qr",
+      form.getButton("qr"),
       path.normalize(path.join(__dirname, imageName)),
       pdfDoc
     );
 
     form.flatten();
     const pdfBytes = await pdfDoc.save();
+
     const uri = writeFile(pdfBytes, `${pdfWritePath}.pdf`);
-    return uri;
+    return pdfData = pdfBytes;
   } catch (error) {
     console.log(error);
   }
 };
 
-const setQRImage = async (form, struct, qrPath, pdfDoc) => {
+const setQRImage = async (form, qrPath, pdfDoc) => {
   try {
-    const field = form.getButton(struct);
+    const field = form;
     const imageUInt8Array = fs.readFileSync(qrPath);
     const pngImage = await pdfDoc.embedPng(imageUInt8Array);
     field.setImage(pngImage);
